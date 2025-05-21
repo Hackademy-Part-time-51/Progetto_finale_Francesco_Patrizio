@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany; // Importa HasMany
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable; // HasApiTokens potrebbe essere già lì
+    use HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -40,7 +40,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed', // O 'hashed' a seconda della versione di Laravel
+        'password' => 'hashed', 
     ];
 
     /**
@@ -48,7 +48,7 @@ class User extends Authenticatable
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function articles(): HasMany
+    public function articles():HasMany
     {
         return $this->hasMany(Article::class);
     }

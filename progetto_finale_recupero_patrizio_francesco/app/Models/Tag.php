@@ -13,12 +13,9 @@ class Tag extends Model
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * @var array<int,string>
      */
-    protected $fillable = [
-        'name', // Nome del tag
-        // 'slug', // Se hai aggiunto uno slug nella migrazione e vuoi renderlo fillable
-    ];
+    protected $fillable = ['name', 'slug'];
 
     /**
      * The articles that belong to the tag.
