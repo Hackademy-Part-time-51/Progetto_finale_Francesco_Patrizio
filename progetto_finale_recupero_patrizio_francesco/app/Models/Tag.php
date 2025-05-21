@@ -1,0 +1,33 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany; // Per la relazione con Article
+
+class Tag extends Model
+{
+    use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'name', // Nome del tag
+        // 'slug', // Se hai aggiunto uno slug nella migrazione e vuoi renderlo fillable
+    ];
+
+    /**
+     * The articles that belong to the tag.
+     * Definisce la relazione "Tag Belongs To Many Articles" (Un tag appartiene a molti articoli).
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function articles(): BelongsToMany
+    {
+        return $this->belongsToMany(Article::class);
+    }
+}

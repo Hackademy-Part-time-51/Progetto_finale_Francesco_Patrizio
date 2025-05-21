@@ -24,7 +24,9 @@
                             <a class="nav-link" href="{{ url('/') }}">Homepage</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contattaci</a> {{-- Sistemeremo il link più tardi --}}
+                           <li class="nav-item">
+                           <a class="nav-link" href="{{ route('contact.form') }}">Contattaci</a>
+                         </li>
                         </li>
                     </ul>
                     <ul class="navbar-nav ms-auto">
