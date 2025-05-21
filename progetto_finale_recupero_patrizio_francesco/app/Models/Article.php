@@ -17,11 +17,11 @@ class Article extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'user_id', // ID dell'utente che ha creato l'articolo
-        'title',   // Titolo dell'articolo
+        'user_id',
+        'title',
         'content',
         'slug',
-        'image_path', // Contenuto dell'articolo
+        'image_path',
 
     ];
 
