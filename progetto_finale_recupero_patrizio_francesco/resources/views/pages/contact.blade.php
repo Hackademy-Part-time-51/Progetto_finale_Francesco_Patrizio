@@ -16,6 +16,11 @@
                             {{ session('success') }}
                         </div>
                     @endif
+                    @if (session('error'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ session('error') }}
+                        </div>
+                    @endif
 
                     <p class="mb-4">Hai domande o suggerimenti? Compila il form qui sotto per inviarci un messaggio.</p>
 

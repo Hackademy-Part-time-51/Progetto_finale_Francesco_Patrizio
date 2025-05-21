@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Article; 
+use App\Models\Article;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactRequestMail;
+use Illuminate\Support\Facades\Log;
 
 class PageController extends Controller
 {
@@ -55,7 +58,16 @@ $validatedData = $request->validate([
     'email' => 'required|email|max:255',
     'message' => 'required|string|min:10',
 ]);
+$adminEmail = 'admin@the_blog.com';
+try {
+            Mail::to($adminEmail)->send(new ContactRequestMail($validatedData));
 return redirect()->route('contact.form')
                  ->with('success','Grazie per il tuo messaggio! Ti risponderemo al più presto!');
 }
+ catch (\Exception $e) {
+        Log::error("Errore invio email contatto: " . $e->getMessage() . "\n" . $e->getTraceAsString());
+            return redirect()->route('contact.form')
+                             ->with('error', 'Spiacenti, si è verificato un errore durante l\'invio del messaggio. Riprova più tardi.');
+        }
+    }
 }
